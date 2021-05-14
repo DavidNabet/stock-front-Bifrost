@@ -27,11 +27,11 @@ const Form = () => {
       formData.append("price", price);
       formData.append("quantity", quantity);
 
-      // Heroku API :
+      // Heroku API : "https://stock-bifrost.herokuapp.com/create"
       // Local API : "http://localhost:3001/create"
 
       const response = await axios.post(
-        "http://localhost:3001/create",
+        "https://stock-bifrost.herokuapp.com/create",
         formData
       );
 

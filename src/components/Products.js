@@ -8,13 +8,15 @@ import axios from "axios";
 import Counter from "./Counter";
 
 const Products = ({ data }) => {
-  // Heroku API :
-  // Local API : "http://localhost:3000/delete/:id"
+  // Heroku API : `https://stock-bifrost.herokuapp.com/delete/${id}`
+  // Local API : `http://localhost:3001/delete/${id}`
 
   // Delete products from BDD
   const deleteProduct = async (id) => {
     try {
-      const response = await axios.post(`http://localhost:3001/delete/${id}`);
+      const response = await axios.post(
+        `https://stock-bifrost.herokuapp.com/delete/${id}`
+      );
       console.log(response);
     } catch (error) {
       console.log(error.message);

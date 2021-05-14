@@ -22,13 +22,15 @@ function App() {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  // Heroku API :
-  // Local API : http://localhost:3001/products
+  // Heroku API : "https://stock-bifrost.herokuapp.com/products"
+  // Local API : "http://localhost:3001/products"
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/products");
+        const response = await axios.get(
+          "https://stock-bifrost.herokuapp.com/products"
+        );
         setData(response.data);
         setIsLoading(false);
       } catch (event) {

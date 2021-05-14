@@ -9,13 +9,13 @@ const Counter = (props) => {
   const { id, quantity } = props;
 
   // Add a quantity
-  // Heroku API :
+  // Heroku API : `https://stock-bifrost.herokuapp.com/product/add?id=${id}&quantity=${quantity}`
   // Local API : `http://localhost:3001/product/add?id=${id}&quantity=${quantity}`
 
   const addProduct = async (id, quantity) => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/product/add?id=${id}&quantity=${quantity}`
+        `https://stock-bifrost.herokuapp.com/product/add?id=${id}&quantity=${quantity}`
       );
       console.log(response);
     } catch (error) {
@@ -24,13 +24,13 @@ const Counter = (props) => {
   };
 
   // Remove a quantity
-  // Heroku API :
+  // Heroku API : `https://stock-bifrost.herokuapp.com/product/remove?id=${id}&quantity=${quantity}`
   // Local API : `http://localhost:3001/product/remove?id=${id}&quantity=${quantity}`
 
   const removeProduct = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/product/remove?id=${id}&quantity=${quantity}`
+        `https://stock-bifrost.herokuapp.com/product/remove?id=${id}&quantity=${quantity}`
       );
       console.log(response);
     } catch (error) {

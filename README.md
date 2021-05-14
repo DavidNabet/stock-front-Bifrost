@@ -2,7 +2,7 @@
 
 🗓 May 2021  
 🪄 Frontend - stock management web app  
-👉🏻 Check here (work in progress)  
+👉🏻 Check [here](https://stock-bifrost-2021.netlify.app/)  
 👀 Look at the backend repo!
 
 ## Welcome in my stock management project for Bifröst
