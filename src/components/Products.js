@@ -7,17 +7,12 @@ import axios from "axios";
 /* Components - import */
 import Counter from "./Counter";
 
-const Products = ({ data }) => {
-  // Heroku API : `https://stock-bifrost.herokuapp.com/delete/${id}`
-  // Local API : `http://localhost:3001/delete/${id}`
-
+const Products = ({ products, serverURL, setProductDelete, quantity }) => {
   // Delete products from BDD
   const deleteProduct = async (id) => {
     try {
-      const response = await axios.post(
-        `https://stock-bifrost.herokuapp.com/delete/${id}`
-      );
-      console.log(response);
+      const response = await axios.post(`${serverURL}delete/${id}`);
+      setProductDelete(true);
     } catch (error) {
       console.log(error.message);
     }
@@ -25,7 +20,7 @@ const Products = ({ data }) => {
 
   return (
     <div className="products">
-      {data.map((item, index) => {
+      {products.map((item) => {
         return (
           <div key={item._id} className="product-card">
             <img src={item.product_image.secure_url} alt={item.product_name} />
@@ -39,9 +34,9 @@ const Products = ({ data }) => {
               />
             </div>
 
-            {/* <span>{item.product_quantity} en stock</span> */}
             <div className="product-card-counter">
               <Counter
+                serverURL={serverURL}
                 count={item.product_quantity}
                 id={item._id}
                 quantity={item.product_quantity}

@@ -1,5 +1,8 @@
 import "./App.css";
 
+/* Import useState() & useEffect() from React */
+import { useState, useEffect } from "react";
+
 /* Components - import */
 import Header from "./components/Header";
 import Form from "./components/Form";
@@ -9,36 +12,45 @@ import Footer from "./components/Footer";
 /* Import Axios */
 import axios from "axios";
 
-/* Import useState() & useEffect() from React */
-import { useState, useEffect } from "react";
-
 /* Fontawsome - import */
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faPlus, faSpinner, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 library.add(faPlus, faSpinner, faTrash);
 
-function App() {
-  const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState(true);
+// const serverURL = "https://stock-bifrost.herokuapp.com/";
+const serverURL = "http://localhost:3001/";
 
-  // Heroku API : "https://stock-bifrost.herokuapp.com/products"
-  // Local API : "http://localhost:3001/products"
+function App() {
+  // STATES
+  // --- General states
+  const [products, setProducts] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  // --- States for "form" part
+  const [data, setData] = useState();
+  const [image, setImage] = useState({});
+  const [name, setName] = useState("");
+  const [brand, setBrand] = useState("");
+  const [price, setPrice] = useState();
+  const [quantity, setQuantity] = useState("");
+  const [isUpload, setIsUpload] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  // --- States for "products" part
+  const [productDelete, setProductDelete] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://stock-bifrost.herokuapp.com/products"
-        );
-        setData(response.data);
+        const response = await axios.get(`${serverURL}products`);
+        setProducts(response.data);
         setIsLoading(false);
+        setProductDelete(false);
       } catch (event) {
         console.log(event.message);
       }
     };
     fetchData();
-  }, []);
+  }, [data, productDelete]);
 
   return isLoading ? (
     <span className="spin">
@@ -49,8 +61,30 @@ function App() {
     <>
       <Header />
       <main className="wrapper">
-        <Form />
-        <Products data={data} />
+        <Form
+          serverURL={serverURL}
+          setData={setData}
+          image={image}
+          setImage={setImage}
+          name={name}
+          setName={setName}
+          brand={brand}
+          setBrand={setBrand}
+          price={price}
+          setPrice={setPrice}
+          quantity={quantity}
+          setQuantity={setQuantity}
+          isUpload={isUpload}
+          setIsUpload={setIsUpload}
+          successMessage={successMessage}
+          setSuccessMessage={setSuccessMessage}
+        />
+        <Products
+          serverURL={serverURL}
+          products={products}
+          quantity={quantity}
+          setProductDelete={setProductDelete}
+        />
       </main>
       <Footer />
     </>

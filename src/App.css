@@ -6,6 +6,7 @@
   --main-green: #66cdaa;
   --main-dark-grey: #4e636b;
   --light-grey: #f5f6f7;
+  --red-remove: #ff6347;
 
   --white: #ffffff;
 }
@@ -156,8 +157,6 @@ main {
   height: 45vh;
   margin-bottom: 10px;
   position: relative;
-}
-.product-card {
   margin-right: 10px;
 }
 .product-card img {
@@ -190,6 +189,9 @@ main {
   text-align: center;
   font-weight: 500;
   padding: 8px;
+}
+.product-card span.null {
+  background-color: var(--red-remove);
 }
 .product-card-details {
   padding: 5px;

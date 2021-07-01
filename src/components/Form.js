@@ -1,22 +1,27 @@
-/* Import hooks from React */
-import { useState } from "react";
-
 /* Import Axios */
 import axios from "axios";
 
 /* Import FontAwesome */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Form = () => {
-  const [data, setData] = useState();
-  const [image, setImage] = useState({});
-  const [name, setName] = useState("");
-  const [brand, setBrand] = useState("");
-  const [price, setPrice] = useState();
-  const [quantity, setQuantity] = useState("");
-  const [isUpload, setIsUpload] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
-
+const Form = ({
+  serverURL,
+  setData,
+  image,
+  setImage,
+  name,
+  setName,
+  brand,
+  setBrand,
+  price,
+  setPrice,
+  quantity,
+  setQuantity,
+  isUpload,
+  setIsUpload,
+  successMessage,
+  setSuccessMessage,
+}) => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
@@ -27,17 +32,16 @@ const Form = () => {
       formData.append("price", price);
       formData.append("quantity", quantity);
 
-      // Heroku API : "https://stock-bifrost.herokuapp.com/create"
-      // Local API : "http://localhost:3001/create"
-
-      const response = await axios.post(
-        "https://stock-bifrost.herokuapp.com/create",
-        formData
-      );
+      const response = await axios.post(`${serverURL}create`, formData);
 
       if (response.status === 201) {
         setData(response.data);
         setSuccessMessage("Produit enregistré en stock 🥳");
+        setName("");
+        setBrand("");
+        setPrice();
+        setQuantity();
+        setImage({});
       }
     } catch (error) {
       console.log(error.message);

@@ -6,16 +6,13 @@ import axios from "axios";
 
 const Counter = (props) => {
   const [counter, setCounter] = useState(props.count);
-  const { id, quantity } = props;
+  const { id, quantity, serverURL } = props;
 
   // Add a quantity
-  // Heroku API : `https://stock-bifrost.herokuapp.com/product/add?id=${id}&quantity=${quantity}`
-  // Local API : `http://localhost:3001/product/add?id=${id}&quantity=${quantity}`
-
   const addProduct = async (id, quantity) => {
     try {
       const response = await axios.get(
-        `https://stock-bifrost.herokuapp.com/product/add?id=${id}&quantity=${quantity}`
+        `${serverURL}product/add?id=${id}&quantity=${quantity}`
       );
       console.log(response);
     } catch (error) {
@@ -24,13 +21,10 @@ const Counter = (props) => {
   };
 
   // Remove a quantity
-  // Heroku API : `https://stock-bifrost.herokuapp.com/product/remove?id=${id}&quantity=${quantity}`
-  // Local API : `http://localhost:3001/product/remove?id=${id}&quantity=${quantity}`
-
   const removeProduct = async () => {
     try {
       const response = await axios.get(
-        `https://stock-bifrost.herokuapp.com/product/remove?id=${id}&quantity=${quantity}`
+        `${serverURL}product/remove?id=${id}&quantity=${quantity}`
       );
       console.log(response);
     } catch (error) {
@@ -64,9 +58,10 @@ const Counter = (props) => {
           +
         </button>
       </div>
+
       <div>
         {counter === 0 ? (
-          <span>{quantity} en stock</span>
+          <span className="null">{counter} en stock</span>
         ) : (
           <span>{counter} en stock</span>
         )}
