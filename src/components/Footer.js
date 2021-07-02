@@ -9,13 +9,17 @@ const Footer = () => {
             target="_blank"
             rel="noreferrer"
           >
-            Manon
+            Manon.
           </a>{" "}
-          for{" "}
-          <a href="https://bifrost.re/" target="_blank" rel="noreferrer">
-            Bifröst.
-          </a>{" "}
-          Stock management web app in React.js.
+          Stock management web app in{" "}
+          <a
+            href="https://fr.reactjs.org/docs/getting-started.html"
+            target="_blank"
+            rel="noreferrer"
+          >
+            ReactJS
+          </a>
+          .
         </p>
       </div>
     </footer>

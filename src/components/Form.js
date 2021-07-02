@@ -1,7 +1,5 @@
-/* Import Axios */
+/* Other - import */
 import axios from "axios";
-
-/* Import FontAwesome */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Form = ({
@@ -25,6 +23,7 @@ const Form = ({
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
+
       const formData = new FormData();
       formData.append("image", image);
       formData.append("name", name);
@@ -39,15 +38,19 @@ const Form = ({
         setSuccessMessage("Produit enregistré en stock 🥳");
         setName("");
         setBrand("");
-        setPrice();
-        setQuantity();
+        setPrice("");
+        setQuantity("");
         setImage({});
+        setIsUpload("");
+        setTimeout(function () {
+          setSuccessMessage("");
+        }, 3000);
       }
     } catch (error) {
+      setSuccessMessage("Oups, ce produit existe déjà 🤭");
       console.log(error.message);
     }
   };
-
   return (
     <div className="form">
       <form onSubmit={handleSubmit}>
@@ -76,6 +79,7 @@ const Form = ({
           type="text"
           id="name"
           placeholder="Huile d'olive verte"
+          value={name}
           onChange={(event) => {
             setName(event.target.value);
           }}
@@ -86,6 +90,7 @@ const Form = ({
           type="text"
           id="brand"
           placeholder="Kalios"
+          value={brand}
           onChange={(event) => {
             setBrand(event.target.value);
           }}
@@ -96,6 +101,7 @@ const Form = ({
           type="text"
           id="price"
           placeholder="19.90"
+          value={price}
           onChange={(event) => {
             setPrice(event.target.value);
           }}
@@ -106,12 +112,13 @@ const Form = ({
           type="text"
           id="quantity"
           placeholder="12"
+          value={quantity}
           onChange={(event) => {
             setQuantity(event.target.value);
           }}
         />
 
-        <input type="submit" value="AJOUTER" className="btn-green" />
+        <input type="submit" value="Ajouter" className="btn-green" />
         <span>{successMessage}</span>
       </form>
     </div>

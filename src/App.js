@@ -9,17 +9,15 @@ import Form from "./components/Form";
 import Products from "./components/Products";
 import Footer from "./components/Footer";
 
-/* Import Axios */
+/* Other - import */
 import axios from "axios";
-
-/* Fontawsome - import */
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faPlus, faSpinner, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 library.add(faPlus, faSpinner, faTrash);
 
-// const serverURL = "https://stock-bifrost.herokuapp.com/";
-const serverURL = "http://localhost:3001/";
+const serverURL = "https://stock-bifrost.herokuapp.com/";
+// const serverURL = "http://localhost:3001/";
 
 function App() {
   // STATES
@@ -37,6 +35,8 @@ function App() {
   const [successMessage, setSuccessMessage] = useState("");
   // --- States for "products" part
   const [productDelete, setProductDelete] = useState(false);
+  const [idProductActif, setIdProductActif] = useState();
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -82,8 +82,11 @@ function App() {
         <Products
           serverURL={serverURL}
           products={products}
-          quantity={quantity}
           setProductDelete={setProductDelete}
+          show={show}
+          setShow={setShow}
+          idProductActif={idProductActif}
+          setIdProductActif={setIdProductActif}
         />
       </main>
       <Footer />

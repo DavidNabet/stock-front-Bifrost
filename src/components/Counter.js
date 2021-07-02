@@ -1,7 +1,7 @@
 /* Import hooks from React */
 import { useState } from "react";
 
-/* Import Axios */
+/* Other - import */
 import axios from "axios";
 
 const Counter = (props) => {
@@ -14,7 +14,6 @@ const Counter = (props) => {
       const response = await axios.get(
         `${serverURL}product/add?id=${id}&quantity=${quantity}`
       );
-      console.log(response);
     } catch (error) {
       console.log(error.message);
     }
@@ -26,7 +25,6 @@ const Counter = (props) => {
       const response = await axios.get(
         `${serverURL}product/remove?id=${id}&quantity=${quantity}`
       );
-      console.log(response);
     } catch (error) {
       console.log(error.message);
     }

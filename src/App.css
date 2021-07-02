@@ -10,6 +10,7 @@
 
   --white: #ffffff;
 }
+
 /* Global rules */
 * {
   box-sizing: border-box;
@@ -57,9 +58,10 @@ h2 {
   border: 1px solid var(--main-green);
   font-weight: bold;
   border-radius: 8px;
-  padding: 0 10px;
-  color: var(--main-dark-grey);
+  padding: 0 20px;
+  color: var(--white);
   cursor: pointer;
+  text-transform: uppercase;
 }
 .btn-green:hover {
   background-color: var(--white);
@@ -150,11 +152,47 @@ main {
   flex-wrap: wrap;
   padding: 0 20px;
 }
+
+/* Modal */
+.products .modalDelete {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.products .confirmDelete {
+  background-color: var(--white);
+  padding: 30px;
+  border-radius: 5px;
+}
+.products .confirmDelete > div > div:first-child {
+  text-align: right;
+  font-weight: bold;
+  cursor: pointer;
+}
+.products .confirmDelete > div > div:first-child:hover {
+  color: var(--main-green);
+}
+.products .confirmDelete p {
+  margin: 40px 0;
+}
+.products .confirmDelete > div > div:last-child {
+  display: flex;
+  justify-content: center;
+}
+/* End modal */
+
 .product-card {
   background-color: var(--white);
   border-radius: 5px;
   width: calc(100% / 4 - 10px);
-  height: 45vh;
+  height: 360px;
   margin-bottom: 10px;
   position: relative;
   margin-right: 10px;
@@ -233,8 +271,7 @@ main {
 }
 .counter {
   display: flex;
-  width: 70%;
-  margin: 0 auto;
+  justify-content: center;
 }
 .counter button {
   height: 40px;

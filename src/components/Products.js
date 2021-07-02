@@ -1,13 +1,19 @@
-/* Import FontAwesome */
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-/* Import Axios */
-import axios from "axios";
-
 /* Components - import */
 import Counter from "./Counter";
 
-const Products = ({ products, serverURL, setProductDelete, quantity }) => {
+/* Other - import */
+import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+const Products = ({
+  products,
+  serverURL,
+  setProductDelete,
+  show,
+  setShow,
+  idProductActif,
+  setIdProductActif,
+}) => {
   // Delete products from BDD
   const deleteProduct = async (id) => {
     try {
@@ -29,7 +35,8 @@ const Products = ({ products, serverURL, setProductDelete, quantity }) => {
                 icon="trash"
                 className="icon-trash"
                 onClick={() => {
-                  deleteProduct(item._id);
+                  setShow(true);
+                  setIdProductActif(item._id);
                 }}
               />
             </div>
@@ -50,6 +57,39 @@ const Products = ({ products, serverURL, setProductDelete, quantity }) => {
           </div>
         );
       })}
+      {/* Modal to confirm delete or not */}
+      {show && (
+        <div
+          className="modalDelete"
+          onClick={() => {
+            setShow(false);
+          }}
+        >
+          <div className="confirmDelete" onClick={(e) => e.stopPropagation()}>
+            <div>
+              <div
+                onClick={() => {
+                  setShow(false);
+                }}
+              >
+                X
+              </div>
+              <p>Voulez-vous vraiment supprimer ce produit ?</p>
+              <div>
+                <button
+                  className="btn-green"
+                  onClick={() => {
+                    deleteProduct(idProductActif);
+                    setShow(false);
+                  }}
+                >
+                  Supprimer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

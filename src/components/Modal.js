@@ -34,8 +34,6 @@
 //         formData.append("quantity", quantity);
 //         formData.append("image", image);
 
-//         // Heroku API : "https://stock-management-bifrost.herokuapp.com/create"
-//         // Local API : http://localhost:3000/
 //         const response = await axios.post(
 //           "http://localhost:3001/create",
 //           formData
