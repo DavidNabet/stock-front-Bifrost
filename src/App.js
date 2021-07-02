@@ -16,8 +16,8 @@ import { faPlus, faSpinner, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 library.add(faPlus, faSpinner, faTrash);
 
-const serverURL = "https://stock-bifrost.herokuapp.com/";
-// const serverURL = "http://localhost:3001/";
+// const serverURL = "https://stock-bifrost.herokuapp.com/";
+const serverURL = "http://localhost:3001/";
 
 function App() {
   // STATES
