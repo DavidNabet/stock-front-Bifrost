@@ -2,8 +2,7 @@
 
 🌤 Mai 2021  
 ✨ Frontend  
-⚙️ Backend - check the backend [repo](https://github.com/manon-boiteau/stock-back-Bifrost.git)  
-🔗 Netlify - check [that](https://stock-bifrost-2021.netlify.app/)
+⚙️ Backend - check the backend [repo](https://github.com/manon-boiteau/stock-back-Bifrost.git)
 
 ## 🌈 Overview - Welcome dude
 
